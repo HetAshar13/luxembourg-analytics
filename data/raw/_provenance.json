@@ -1,0 +1,41 @@
+{
+  "fetched_at": "2026-03-17T15:18:00.873469",
+  "sources": {
+    "eurostat_employment": {
+      "status": "stub",
+      "rows": 0
+    },
+    "eurostat_housing_burden": {
+      "status": "stub",
+      "rows": 0
+    },
+    "eurostat_hpi": {
+      "status": "stub",
+      "rows": 0
+    },
+    "eurostat_financial_employment": {
+      "status": "stub",
+      "rows": 0
+    },
+    "eurostat_wages": {
+      "status": "stub",
+      "rows": 0
+    },
+    "ecb_mfi_assets": {
+      "status": "ok",
+      "rows": 19
+    },
+    "ecb_num_banks": {
+      "status": "stub",
+      "rows": 0
+    },
+    "statec_crossborder": {
+      "status": "ok",
+      "rows": 24
+    },
+    "habitat_prices": {
+      "status": "stub",
+      "rows": 0
+    }
+  }
+}

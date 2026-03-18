@@ -1,0 +1,30 @@
+# Luxembourg Analytics Project — Python dependencies
+# Install with: pip install -r requirements.txt
+
+# ── Core data stack ──────────────────────────────────────────
+pandas>=2.0.0
+numpy>=1.24.0
+requests>=2.31.0
+openpyxl>=3.1.0          # Read/write .xlsx (Observatoire de l'Habitat)
+
+# ── Database ─────────────────────────────────────────────────
+# SQLite ships with Python — no install needed.
+# sqlalchemy is used in 02_clean.py to write DataFrames to SQLite cleanly.
+sqlalchemy>=2.0.0
+
+# ── Analysis & modelling ─────────────────────────────────────
+statsmodels>=0.14.0      # OLS regression (Day 4)
+scikit-learn>=1.3.0      # Optional: preprocessing utilities
+
+# ── Visualisation ────────────────────────────────────────────
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.18.0           # Interactive charts in notebook; also exports to Power BI
+
+# ── Notebook ─────────────────────────────────────────────────
+jupyterlab>=4.0.0
+ipywidgets>=8.0.0
+
+# ── Utilities ────────────────────────────────────────────────
+python-dotenv>=1.0.0     # Store any API keys in .env (ECB key not needed, but good habit)
+tqdm>=4.65.0             # Progress bars for loops
