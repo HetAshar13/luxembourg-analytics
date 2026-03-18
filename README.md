@@ -170,5 +170,3 @@ comparison, financial employment share, key findings text card.
 > dashboard and consulting-style insight report from scratch in 3 days.
 
 ---
-
-*University of Luxembourg — Master's in Information and Computer Science (Belval campus)*
