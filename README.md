@@ -162,7 +162,7 @@ comparison, financial employment share, key findings text card.
 
 ---
 
-## CV bullet
+## Summary
 
 > Produced actionable financial sector insights for a Luxembourg Big 4 audience —
 > benchmarked across 6 EU countries and 19 years of data — by building an end-to-end
