@@ -1,23 +1,48 @@
 # Luxembourg Housing, Employment and Banking
 
-I built this project to compare how housing prices, cross-border employment and bank assets changed in Luxembourg from 2005 to 2023. A Python pipeline prepares the source files for SQLite and a three-page Power BI dashboard.
+This project brings together 19 years of housing, employment and banking data for Luxembourg and its peers. A Python pipeline prepares the source files for SQLite and a three-page Power BI dashboard.
 
 ![Power BI overview showing cross-border worker counts and housing trends](reports/dashboard_page-0001.jpg)
 
-The 2023 worker count is a useful example. The clean data records 50,200 commuters living in Belgium, 35,600 in Germany and 104,600 in France, for a total of 190,400. The Luxembourg house price index for the same year was 210.47, with 2010 set to 100.
+## Where did the 190,400 commuters come from?
+
+The overview rounds the 2023 cross-border worker count to 190K. The exact total comes from three rows in the cleaned data.
+
+| Country of residence | Workers in the 2023 snapshot |
+| --- | ---: |
+| France | 104,600 |
+| Belgium | 50,200 |
+| Germany | 35,600 |
+| **Total** | **190,400** |
 
 ```sql
-SELECT SUM(worker_count) AS cross_border_workers
+SELECT residence_country, worker_count,
+       SUM(worker_count) OVER () AS workers_total
 FROM crossborder_workers
-WHERE year = 2023;
+WHERE year = 2023
+ORDER BY worker_count DESC;
 ```
 
-## Data and methods
+The same dashboard shows a 2023 Luxembourg house price index of 210.47 with 2010 set to 100. The cleaner filters the housing input to the existing-dwellings index before averaging quarterly observations into annual values. The raw file also contains percentage-change series.
 
-- [Eurostat](https://ec.europa.eu/eurostat) supplies the house price index (`prc_hpi_q`) and housing cost overburden series (`ilc_lvho07c`).
-- The [ECB Data Portal](https://data.ecb.europa.eu/) is the source for the banking asset series. The [STATEC portal](https://lustat.statec.lu/) publishes worker counts by country of residence.
-- The [cleaning script](02_clean.py) uses reference values when some source files are missing and interpolates some employment and wage series between reference years. The built employment table has a missing financial-sector share for Luxembourg in 2023.
-- The [analysis notebook](notebooks/04_analysis.ipynb) compares housing and banking indicators and fits an exploratory regression using observational data.
+## From source files to dashboard
+
+```mermaid
+flowchart TD
+    A["Eurostat, ECB and STATEC sources"] --> B["Raw CSV snapshot"]
+    B --> C["Python aligns countries, units and years"]
+    C --> D["Clean CSVs"]
+    D --> E["Power BI dashboard"]
+    C --> F["SQLite tables and analytical views"]
+```
+
+SQLite includes views for affordability, cross-border employment, banking growth, peer comparisons and regression inputs. The analysis notebook uses observational data for exploratory analysis. [Cleaning script](02_clean.py) · [SQLite views](sql/schema.sql) · [Analysis notebook](notebooks/04_analysis.ipynb)
+
+## Data provenance
+
+- The [tracked-file inventory](data/raw/input_inventory.json) records row counts and hashes for this snapshot. The [earlier collection log](data/raw/_provenance.json) records the collector's reported status at the time. For example, the current commuter CSV has 57 rows and the current house-price CSV has 31,528 rows. The exact retrieval history of later file replacements is unrecorded.
+- Eurostat is the source for the house price index and housing cost overburden series. The ECB Data Portal is the reference for banking assets. STATEC publishes cross-border worker counts by country of residence. [Eurostat](https://ec.europa.eu/eurostat) · [ECB Data Portal](https://data.ecb.europa.eu/) · [STATEC](https://lustat.statec.lu/)
+- The cleaner uses reference values where some inputs are missing and interpolates parts of the wage and employment series. The current SQLite build has no Luxembourg financial-sector employment share for 2023. The financial employment chart in the original third dashboard export shows an older snapshot.
 
 ## Open or rebuild
 

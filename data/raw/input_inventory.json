@@ -1,0 +1,35 @@
+{
+  "scope": "CSV inputs tracked with this snapshot. This inventory records file contents and row counts. Retrieval dates and collector outcomes are recorded separately when known.",
+  "files": [
+    {
+      "file": "ecb_mfi_assets.csv",
+      "data_rows": 19,
+      "sha256": "b11e594e9019db09d027f1d080ee5b7dbd2caaf7c54389db0d9b3a422b5bfc3c"
+    },
+    {
+      "file": "eurostat_employment.csv",
+      "data_rows": 514148,
+      "sha256": "20a7445db53208107bd7b25ebcf3f1b82c166fc3e6d2df72999ed43fc1cb8adc"
+    },
+    {
+      "file": "eurostat_housing_burden.csv",
+      "data_rows": 3825,
+      "sha256": "1469c8a88de5e39192cdfd989b8912e59ff04233ad451eb9d30447019f2f296b"
+    },
+    {
+      "file": "eurostat_hpi.csv",
+      "data_rows": 31528,
+      "sha256": "80b812d55a0fd2c6f1751353a229adccc84d4971886688edade2653e6d39d451"
+    },
+    {
+      "file": "eurostat_wages.csv",
+      "data_rows": 561,
+      "sha256": "19edc5c88a2ed525b423e9a599aa144aed83ad0e8000300e4a568baea0c6f21e"
+    },
+    {
+      "file": "statec_crossborder.csv",
+      "data_rows": 57,
+      "sha256": "a4af49f97f20021663e1a5a6322b18c30f09174a1cb81a0135be6c0c789d4db7"
+    }
+  ]
+}
